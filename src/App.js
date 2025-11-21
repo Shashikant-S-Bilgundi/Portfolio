@@ -10,6 +10,7 @@ function App() {
         <Route path="/header" element={<Header/>}/>
         <Route path="/homepage" element={<HomePage/>}/>
         <Route path="/portfoliocontactform" element={<PortfolioContactForm/>}/>
+        <Route path="/" element={<HomePage/>} />
       </Routes>
    </BrowserRouter>
   );

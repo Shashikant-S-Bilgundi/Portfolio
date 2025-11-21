@@ -234,7 +234,7 @@ export function HomePage() {
             ))}
           </div>
         </section>
-        <section id="skills" className="mt-16 md:mt-24">
+        <section id="tools" className="mt-16 md:mt-24">
           <h2 className="text-xl font-semibold md:text-2xl">Tools & Software</h2>
           <div className="mt-4 flex flex-wrap gap-2">
             {["VS Code","ChatGPT","Postman","MongoDB Compass","Base44","BlackBoxAI","Vite","Git & GitHub","Vercel","Thunder Client","AWS (EC2 / S3 / Lambda)"
@@ -251,10 +251,10 @@ export function HomePage() {
 
         {/* Experience / Timeline */}
         <section id="experience" className="mt-16 md:mt-24">
-  <h2 className="text-xl font-semibold md:text-2xl">Experience</h2>
-  <p className="mt-2 text-sm text-slate-400">
-    A quick overview of my experience as a MERN stack developer.
-  </p>
+        <h2 className="text-xl font-semibold md:text-2xl">Experience</h2>
+        <p className="mt-2 text-sm text-slate-400">
+          A quick overview of my experience as a MERN stack developer.
+        </p>
 
   <div className="mt-6 grid gap-6 md:grid-cols-[minmax(0,2fr),minmax(0,3fr)]">
     {/* Timeline */}
@@ -599,9 +599,8 @@ export function HomePage() {
         <section id="contact" className="mt-16 md:mt-24">
           <h2 className="text-xl font-semibold md:text-2xl">Contact</h2>
           <p className="mt-2 max-w-2xl text-sm text-slate-400">
-            Have a project in mind, or want to discuss improving an existing
-            process or tool? Share a few details and I&apos;ll get back to you
-            within 24–48 hours.
+            Have a project in mind, or want to discuss improving an existing process or tool?
+            Share a few details and I&apos;ll get back to you within 24–48 hours.
           </p>
           <div className="mt-6">
             <PortfolioContactForm />

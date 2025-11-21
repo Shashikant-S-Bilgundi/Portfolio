@@ -101,9 +101,6 @@ export default function PortfolioContactForm() {
   return (
     <section id="contact" className="mt-16 md:mt-24">
       <div className="max-w-3xl mx-auto">
-        <h2 className="text-xl font-semibold md:text-2xl">
-          Contact
-        </h2>
         <p className="mt-2 text-sm text-slate-400">
           Have a project, idea, or question? Share a few details and I&apos;ll get back to you.
         </p>
@@ -303,7 +300,7 @@ export default function PortfolioContactForm() {
           </div>
 
           {/* File upload */}
-          <div className="md:col-span-2">
+          {/* <div className="md:col-span-2">
             <label className="mb-1 block text-xs font-medium text-slate-300">
               Attach file (optional)
             </label>
@@ -316,7 +313,7 @@ export default function PortfolioContactForm() {
             <p className="mt-1 text-[11px] text-slate-500">
               You can upload requirement documents, references, or designs (PDF, JPG, PNG, etc.).
             </p>
-          </div>
+          </div> */}
 
           {/* Submit button */}
           <div className="md:col-span-2 flex justify-between items-center">
