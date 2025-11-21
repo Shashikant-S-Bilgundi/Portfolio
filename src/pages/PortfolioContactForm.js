@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-// ✅ CRA style env var (no import.meta)
 const API_BASE_URL =
   process.env.REACT_APP_API_BASE_URL || "http://localhost:3001";
 
@@ -16,32 +15,25 @@ export default function PortfolioContactForm() {
     message: "",
     contactMethod: "email",
     howHeard: "",
-    file: null,
+    // file: null, // ❌ not needed for deployed version
   });
 
   const [errors, setErrors] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value, files } = e.target;
-    if (name === "file") {
-      setFormData((prev) => ({ ...prev, file: files[0] || null }));
-    } else {
-      setFormData((prev) => ({ ...prev, [name]: value }));
-    }
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const validate = () => {
     const newErrors = {};
-
     if (!formData.name.trim()) newErrors.name = "Name is required";
     if (!formData.email.trim()) newErrors.email = "Email is required";
     else if (!/^\S+@\S+\.\S+$/.test(formData.email))
       newErrors.email = "Enter a valid email address";
-
     if (!formData.subject.trim()) newErrors.subject = "Subject is required";
     if (!formData.message.trim()) newErrors.message = "Message is required";
-
     return newErrors;
   };
 
@@ -49,24 +41,15 @@ export default function PortfolioContactForm() {
     e.preventDefault();
     const validationErrors = validate();
     setErrors(validationErrors);
-
     if (Object.keys(validationErrors).length > 0) return;
 
     try {
-      const formDataToSend = new FormData();
-
-      Object.entries(formData).forEach(([key, value]) => {
-        if (key === "file") {
-          if (value) formDataToSend.append("file", value);
-        } else {
-          formDataToSend.append(key, value);
-        }
-      });
-
-      // ✅ Use API_BASE_URL from env (no double slash)
       const res = await fetch(`${API_BASE_URL}/api/contact`, {
         method: "POST",
-        body: formDataToSend,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
 
       if (!res.ok) {
@@ -77,6 +60,7 @@ export default function PortfolioContactForm() {
       setSubmitted(true);
       setErrors({});
 
+      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -88,7 +72,6 @@ export default function PortfolioContactForm() {
         message: "",
         contactMethod: "email",
         howHeard: "",
-        file: null,
       });
     } catch (err) {
       console.error(err);
