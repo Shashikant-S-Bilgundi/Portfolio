@@ -2,7 +2,7 @@ import { useState } from "react";
 
 // ✅ Use CRA-style env var, or fallback to localhost
 const API_BASE_URL =
-  process.env.REACT_APP_API_BASE_URL || "http://localhost:3001";
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:3001";
 
 export default function PortfolioContactForm() {
   const [formData, setFormData] = useState({
