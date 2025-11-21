@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-// ✅ Use CRA-style env var, or fallback to localhost
+// ✅ CRA style env var (no import.meta)
 const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:3001";
+  process.env.REACT_APP_API_BASE_URL || "http://localhost:3001";
 
 export default function PortfolioContactForm() {
   const [formData, setFormData] = useState({
@@ -25,7 +25,7 @@ export default function PortfolioContactForm() {
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "file") {
-      setFormData((prev) => ({ ...prev, file: files?.[0] || null }));
+      setFormData((prev) => ({ ...prev, file: files[0] || null }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -63,6 +63,7 @@ export default function PortfolioContactForm() {
         }
       });
 
+      // ✅ Use API_BASE_URL from env (no double slash)
       const res = await fetch(`${API_BASE_URL}/api/contact`, {
         method: "POST",
         body: formDataToSend,
