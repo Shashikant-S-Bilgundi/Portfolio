@@ -44,7 +44,7 @@ export default function PortfolioContactForm() {
     if (Object.keys(validationErrors).length > 0) return;
 
     try {
-      const res = await fetch(`${API_BASE_URL}/api/contact`, {
+      const res = await fetch(`${REACT_APP_API_BASE_URL}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
