@@ -15,7 +15,6 @@ export default function PortfolioContactForm() {
     message: "",
     contactMethod: "email",
     howHeard: "",
-    // file: null, // ❌ not needed for deployed version
   });
 
   const [errors, setErrors] = useState({});
@@ -44,7 +43,7 @@ export default function PortfolioContactForm() {
     if (Object.keys(validationErrors).length > 0) return;
 
     try {
-      const res = await fetch(`${REACT_APP_API_BASE_URL}/api/contact`, {
+      const res = await fetch(`${API_BASE_URL}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +59,6 @@ export default function PortfolioContactForm() {
       setSubmitted(true);
       setErrors({});
 
-      // Reset form
       setFormData({
         name: "",
         email: "",
@@ -281,9 +279,7 @@ export default function PortfolioContactForm() {
           </select>
         </div>
 
-        {/* (File upload is currently disabled; can be re-enabled later) */}
-
-        {/* Submit button */}
+        {/* Submit */}
         <div className="md:col-span-2 flex justify-between items-center">
           <p className="text-[11px] text-slate-500">
             I usually reply within 24–48 hours.
